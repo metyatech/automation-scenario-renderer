@@ -1,0 +1,38 @@
+{
+  "name": "@metyatech/automation-scenario-renderer",
+  "version": "0.1.0",
+  "description": "Renderer for markdown, annotated images, and annotated videos from scenario artifacts",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "scan:deps": "npm audit --audit-level=high",
+    "verify": "npm run format && npm run lint && npm run typecheck && npm test && npm run build && npm run scan:deps"
+  },
+  "dependencies": {
+    "@metyatech/automation-scenario-spec": "github:metyatech/automation-scenario-spec#main",
+    "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "eslint": "^9.36.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
