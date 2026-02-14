@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 
-import type { VideoTimelineEvent } from "@metyatech/automation-scenario-spec";
+import type { VideoTimelineEvent } from "../types.js";
 import { buildFfmpegFilterGraph } from "./ffmpegFilters.js";
 
 export async function annotateVideo(

@@ -1,4 +1,4 @@
-import type { RunArtifacts } from "@metyatech/automation-scenario-spec";
+import type { RunArtifacts } from "./types.js";
 
 export function generateMarkdown(artifacts: {
   scenarioId: string;

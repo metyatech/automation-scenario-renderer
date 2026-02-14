@@ -23,7 +23,6 @@
     "verify": "npm run format && npm run lint && npm run typecheck && npm test && npm run build && npm run scan:deps"
   },
   "dependencies": {
-    "@metyatech/automation-scenario-spec": "github:metyatech/automation-scenario-spec#main",
     "sharp": "^0.34.2"
   },
   "devDependencies": {

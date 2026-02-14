@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
-import type { RunArtifacts } from "@metyatech/automation-scenario-spec";
+import type { RunArtifacts } from "./types.js";
 
 import { generateMarkdown } from "./markdown.js";
 import { toMarkdownAssetPath } from "./paths.js";

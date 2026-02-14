@@ -1,6 +1,6 @@
 import sharp from "sharp";
 
-import type { AnnotationSpec } from "@metyatech/automation-scenario-spec";
+import type { AnnotationSpec } from "../types.js";
 import { buildSvgOverlay } from "./svgOverlay.js";
 
 export async function annotateImage(

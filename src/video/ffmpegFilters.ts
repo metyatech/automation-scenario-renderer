@@ -1,4 +1,4 @@
-import type { VideoTimelineEvent } from "@metyatech/automation-scenario-spec";
+import type { VideoTimelineEvent } from "../types.js";
 
 export function buildFfmpegFilterGraph(events: VideoTimelineEvent[]): string {
   const filters: string[] = [];

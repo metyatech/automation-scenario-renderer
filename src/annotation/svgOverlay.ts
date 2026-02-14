@@ -1,4 +1,4 @@
-import type { AnnotationSpec } from "@metyatech/automation-scenario-spec";
+import type { AnnotationSpec } from "../types.js";
 
 export function buildSvgOverlay(
   width: number,
