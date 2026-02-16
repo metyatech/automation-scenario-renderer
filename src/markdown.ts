@@ -9,7 +9,7 @@ export function generateMarkdown(artifacts: {
   const lines: string[] = [];
   lines.push(`# ${artifacts.title}`);
   lines.push("");
-  lines.push(`Scenario ID: \`${artifacts.scenarioId}\``);
+  lines.push(`<!-- scenario_id: ${artifacts.scenarioId} -->`);
   lines.push("");
 
   if (artifacts.videoPath) {

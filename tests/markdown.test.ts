@@ -19,6 +19,8 @@ describe("markdown generation", () => {
     });
 
     expect(markdown).toContain("# Unity basic flow");
+    expect(markdown).toContain("<!-- scenario_id: unity-basic -->");
+    expect(markdown).not.toContain("Scenario ID:");
     expect(markdown).toContain("## 1. Open project");
     expect(markdown).toContain(
       "![Open project](artifacts/run-1/screenshots/open-project.png)",
