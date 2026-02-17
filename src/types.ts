@@ -16,9 +16,28 @@ export type AnnotationSpec =
       box: Box;
     }
   | {
+      type: "click_pulse";
+      box: Box;
+    }
+  | {
+      type: "highlight_box";
+      box: Box;
+    }
+  | {
       type: "dragDrop";
       from: Point;
       to: Point;
+    }
+  | {
+      type: "drag_arrow";
+      from: Point;
+      to: Point;
+    }
+  | {
+      type: "label";
+      text: string;
+      point?: Point;
+      box?: Box;
     };
 
 export type StepArtifact = {
@@ -27,6 +46,7 @@ export type StepArtifact = {
   description?: string;
   imagePath: string;
   annotation?: AnnotationSpec;
+  annotations?: AnnotationSpec[];
   startedAtMs?: number;
   endedAtMs?: number;
 };
@@ -47,9 +67,36 @@ export type VideoTimelineEvent =
       box: Box;
     }
   | {
+      type: "click_pulse";
+      startSeconds: number;
+      endSeconds: number;
+      box: Box;
+    }
+  | {
+      type: "highlight_box";
+      startSeconds: number;
+      endSeconds: number;
+      box: Box;
+    }
+  | {
       type: "dragDrop";
       startSeconds: number;
       endSeconds: number;
       from: Point;
       to: Point;
+    }
+  | {
+      type: "drag_arrow";
+      startSeconds: number;
+      endSeconds: number;
+      from: Point;
+      to: Point;
+    }
+  | {
+      type: "label";
+      startSeconds: number;
+      endSeconds: number;
+      text: string;
+      point?: Point;
+      box?: Box;
     };

@@ -14,13 +14,26 @@ export function buildSvgOverlay(
     "</defs>",
   ];
 
-  if (annotation.type === "click") {
+  if (
+    annotation.type === "click" ||
+    annotation.type === "click_pulse" ||
+    annotation.type === "highlight_box"
+  ) {
     base.push(
       `<rect x="${annotation.box.x}" y="${annotation.box.y}" width="${annotation.box.width}" height="${annotation.box.height}" fill="none" stroke="#ff0000" stroke-width="4" />`,
     );
   }
 
-  if (annotation.type === "dragDrop") {
+  if (annotation.type === "click_pulse") {
+    const centerX = annotation.box.x + annotation.box.width / 2;
+    const centerY = annotation.box.y + annotation.box.height / 2;
+    const radius = Math.max(annotation.box.width, annotation.box.height) / 2;
+    base.push(
+      `<circle id="pulseRing" cx="${centerX}" cy="${centerY}" r="${radius}" fill="none" stroke="#ff0000" stroke-width="4" opacity="0.8"><animate attributeName="r" values="${radius * 0.8};${radius * 1.4}" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.9;0.15" dur="1s" repeatCount="indefinite" /></circle>`,
+    );
+  }
+
+  if (annotation.type === "dragDrop" || annotation.type === "drag_arrow") {
     base.push(
       `<circle cx="${annotation.from.x}" cy="${annotation.from.y}" r="12" fill="#ff0000" opacity="0.65" />`,
     );
@@ -32,6 +45,28 @@ export function buildSvgOverlay(
     );
   }
 
+  if (annotation.type === "label") {
+    const anchorX =
+      annotation.point?.x ??
+      (annotation.box ? annotation.box.x + annotation.box.width / 2 : 24);
+    const anchorY =
+      annotation.point?.y ??
+      (annotation.box ? Math.max(20, annotation.box.y - 12) : 40);
+    const text = escapeXml(annotation.text);
+    base.push(
+      `<text x="${anchorX}" y="${anchorY}" fill="#ff0000" font-size="28" font-family="sans-serif" font-weight="700">${text}</text>`,
+    );
+  }
+
   base.push("</svg>");
   return base.join("");
+}
+
+function escapeXml(text: string): string {
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
 }
