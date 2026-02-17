@@ -15,7 +15,11 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Fixed
 
-- Addressed PR review feedback for repository files (contact method, checklist, and OS examples).
+- Addressed PR review feedback for repository files:
+  - Updated `CODE_OF_CONDUCT.md` with correct contact email.
+  - Updated `.github/PULL_REQUEST_TEMPLATE.md` to use `npm run verify`.
+  - Updated `.github/ISSUE_TEMPLATE/bug_report.md` with relevant environment fields for a Node.js library.
+  - Updated `CONTRIBUTING.md` to reflect the actual project workflow and development commands.
 
 ## [0.1.0] - 2026-01-26
 
