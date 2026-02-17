@@ -13,6 +13,10 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - Added `.github/ISSUE_TEMPLATE` (bug report and feature request).
 - Added `.github/PULL_REQUEST_TEMPLATE.md`.
 
+### Fixed
+
+- Address PR review feedback for repository files (contact method, checklist, and OS examples).
+
 ## [0.1.0] - 2026-01-26
 
 ### Added
