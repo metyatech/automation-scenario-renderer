@@ -9,7 +9,7 @@ export type {
   Point,
   RunArtifacts,
   StepArtifact,
-  VideoTimelineEvent,
+  VideoTimelineEvent
 } from "./types.js";
 export { annotateVideo } from "./video/annotateVideo.js";
 export { buildFfmpegFilterGraph } from "./video/ffmpegFilters.js";
