@@ -12,7 +12,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky && npm run build",
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "lint": "eslint . --ext .ts",
@@ -32,8 +32,21 @@
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "minimatch": "^10.2.1"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --check",
+      "eslint"
+    ],
+    "*.{json,md}": [
+      "prettier --check"
+    ]
   }
 }
