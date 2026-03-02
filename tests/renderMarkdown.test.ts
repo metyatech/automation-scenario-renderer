@@ -9,9 +9,7 @@ import { renderMarkdownFromArtifacts } from "../src/renderMarkdown.js";
 const tempDirs: string[] = [];
 
 afterEach(async () => {
-  await Promise.all(
-    tempDirs.map((dir) => rm(dir, { recursive: true, force: true })),
-  );
+  await Promise.all(tempDirs.map((dir) => rm(dir, { recursive: true, force: true })));
 });
 
 describe("renderMarkdownFromArtifacts", () => {
@@ -28,12 +26,12 @@ describe("renderMarkdownFromArtifacts", () => {
           {
             id: "step-1",
             title: "Step 1",
-            imagePath: join(tempDir, "artifacts", "step-1.png"),
-          },
+            imagePath: join(tempDir, "artifacts", "step-1.png")
+          }
         ],
-        videoPath: join(tempDir, "artifacts", "video.mp4"),
+        videoPath: join(tempDir, "artifacts", "video.mp4")
       },
-      markdownPath,
+      markdownPath
     );
 
     const markdown = await readFile(markdownPath, "utf8");

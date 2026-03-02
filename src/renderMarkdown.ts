@@ -8,17 +8,17 @@ import { toMarkdownAssetPath } from "./paths.js";
 
 export async function renderMarkdownFromArtifacts(
   artifacts: RunArtifacts,
-  markdownPath: string,
+  markdownPath: string
 ): Promise<void> {
   const markdownArtifacts: RunArtifacts = {
     ...artifacts,
     steps: artifacts.steps.map((step) => ({
       ...step,
-      imagePath: toMarkdownAssetPath(step.imagePath, markdownPath),
+      imagePath: toMarkdownAssetPath(step.imagePath, markdownPath)
     })),
     videoPath: artifacts.videoPath
       ? toMarkdownAssetPath(artifacts.videoPath, markdownPath)
-      : undefined,
+      : undefined
   };
 
   await mkdir(dirname(markdownPath), { recursive: true });
@@ -26,7 +26,7 @@ export async function renderMarkdownFromArtifacts(
     scenarioId: markdownArtifacts.scenarioId,
     title: markdownArtifacts.title,
     steps: markdownArtifacts.steps,
-    videoPath: markdownArtifacts.videoPath,
+    videoPath: markdownArtifacts.videoPath
   });
 
   await writeFile(markdownPath, markdownOutput, "utf8");
