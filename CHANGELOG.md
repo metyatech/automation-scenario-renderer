@@ -8,6 +8,19 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Added
 
+- `number_badge` annotation type: red circle with white number overlay.
+- Video output renders as `<video controls>` HTML tag instead of Markdown link.
+- Mermaid flowchart auto-generation for multi-step scenarios.
+- Related scenarios section ("関連ガイド") with cross-links in Markdown output.
+- `@metyatech/automation-scenario-spec` as explicit dependency for schema alignment.
+
+### Fixed
+
+- `renderMarkdownFromArtifacts` now passes `relatedScenarios` to `generateMarkdown`.
+- Resolved npm audit vulnerabilities (ajv, minimatch, rollup).
+
+### Changed
+
 - Added `.github/workflows/ci.yml` for CI automation.
 - Added `CODE_OF_CONDUCT.md`.
 - Added `.github/ISSUE_TEMPLATE` (bug report and feature request).

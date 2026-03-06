@@ -40,4 +40,30 @@ describe("renderMarkdownFromArtifacts", () => {
     expect(markdown).toContain("../artifacts/step-1.png");
     expect(markdown).toContain("../artifacts/video.mp4");
   });
+
+  it("includes relatedScenarios in output", async () => {
+    const tempDir = await mkdtemp(join(tmpdir(), "renderer-md-"));
+    tempDirs.push(tempDir);
+
+    const markdownPath = join(tempDir, "docs", "guide.md");
+    await renderMarkdownFromArtifacts(
+      {
+        scenarioId: "sample",
+        title: "Sample",
+        steps: [
+          {
+            id: "step-1",
+            title: "Step 1",
+            imagePath: join(tempDir, "artifacts", "step-1.png"),
+          },
+        ],
+        relatedScenarios: [{ scenarioId: "other-guide", label: "別のガイド" }],
+      },
+      markdownPath,
+    );
+
+    const markdown = await readFile(markdownPath, "utf8");
+    expect(markdown).toContain("## 関連ガイド");
+    expect(markdown).toContain("[別のガイド](./other-guide.md)");
+  });
 });

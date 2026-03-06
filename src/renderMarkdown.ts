@@ -27,6 +27,7 @@ export async function renderMarkdownFromArtifacts(
     title: markdownArtifacts.title,
     steps: markdownArtifacts.steps,
     videoPath: markdownArtifacts.videoPath,
+    relatedScenarios: markdownArtifacts.relatedScenarios,
   });
 
   await writeFile(markdownPath, markdownOutput, "utf8");
