@@ -8,18 +8,27 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Added
 
-- Added `.github/workflows/ci.yml` for CI automation.
-- Added `CODE_OF_CONDUCT.md`.
-- Added `.github/ISSUE_TEMPLATE` (bug report and feature request).
-- Added `.github/PULL_REQUEST_TEMPLATE.md`.
+- Added `processArtifacts` function to automate annotation application to images and videos.
+- Added optional `outputPath` parameter to `annotateImage` for better control and consistency with `annotateVideo`.
+- Added automated integration tests for `annotateImage` and `annotateVideo` using `sharp` and `ffmpeg`.
+- Added automated tests for `processArtifacts` function.
+- Updated `README.md` with batch processing examples and explicit system requirements.
+
+### Changed
+
+- Updated `AGENTS.md` with the latest global rules from `compose-agentsmd`.
 
 ### Fixed
 
-- Addressed PR review feedback for repository files:
-  - Updated `CODE_OF_CONDUCT.md` with correct contact email.
-  - Updated `.github/PULL_REQUEST_TEMPLATE.md` to use `npm run verify`.
-  - Updated `.github/ISSUE_TEMPLATE/bug_report.md` with relevant environment fields for a Node.js library.
-  - Updated `CONTRIBUTING.md` to reflect the actual project workflow and development commands.
+- Improved consistency between image and video annotation APIs.
+
+## [0.2.0] - 2026-03-06
+
+### Added
+
+- New `processArtifacts` batch processing function.
+- Enhanced `annotateImage` with `outputPath` support.
+- Integration tests for core functional side-effects.
 
 ## [0.1.0] - 2026-01-26
 

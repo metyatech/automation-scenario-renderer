@@ -8,8 +8,9 @@ This package provides:
 
 - Markdown generation from run artifacts
 - Relative asset path conversion for Markdown
-- Screenshot annotation overlays (click and drag-drop)
-- Video annotation overlays using ffmpeg filter graphs
+- Screenshot annotation overlays (using `sharp`)
+- Video annotation overlays (using `ffmpeg` filter graphs)
+- Batch processing of artifacts (images and videos)
 
 ## Install
 
@@ -19,10 +20,22 @@ npm install @metyatech/automation-scenario-renderer
 
 ## Usage
 
+### Rendering Markdown
+
 ```ts
 import { renderMarkdownFromArtifacts } from "@metyatech/automation-scenario-renderer";
 
 await renderMarkdownFromArtifacts(artifacts, "./docs/controls/generated.md");
+```
+
+### Applying Annotations
+
+```ts
+import { processArtifacts } from "@metyatech/automation-scenario-renderer";
+
+// This applies all step annotations to images (in-place)
+// and generates an annotated video if videoPath is provided.
+await processArtifacts(artifacts, videoEvents);
 ```
 
 ## Development
@@ -32,10 +45,11 @@ npm install
 npm run verify
 ```
 
-## Compatibility
+## Requirements
 
 - Node.js 20+
-- `ffmpeg` in `PATH` for video annotation
+- `sharp` (included as dependency)
+- `ffmpeg` must be available in your `PATH` for video annotation.
 
 ## Links
 
