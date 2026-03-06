@@ -46,6 +46,17 @@ export function buildFfmpegFilterGraph(events: VideoTimelineEvent[]): string {
       filters.push(
         `drawtext=text='${escapeDrawText(event.text)}':x=${x}:y=${y}:fontcolor=red:fontsize=32:borderw=2:bordercolor=black@0.7:enable='between(t,${event.startSeconds},${event.endSeconds})'`,
       );
+      continue;
+    }
+
+    if (event.type === "number_badge") {
+      const cx = Math.floor(event.point.x);
+      const cy = Math.floor(event.point.y);
+      // Render a red circle-like background using drawtext box with large border padding,
+      // then center the white number text at the badge point.
+      filters.push(
+        `drawtext=text='${escapeDrawText(event.text)}':x=${cx}-(text_w/2):y=${cy}-(text_h/2):fontcolor=white:fontsize=22:box=1:boxcolor=red:boxborderw=20:enable='between(t,${event.startSeconds},${event.endSeconds})'`,
+      );
     }
   }
 

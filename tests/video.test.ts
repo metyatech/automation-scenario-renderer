@@ -76,4 +76,23 @@ describe("ffmpeg filter graph", () => {
     expect(graph).toContain("drawline");
     expect(graph).toContain("between(t,0.5,1.5)");
   });
+
+  it("creates number_badge with red box background and white text", () => {
+    const graph = buildFfmpegFilterGraph([
+      {
+        type: "number_badge",
+        startSeconds: 3,
+        endSeconds: 6,
+        point: { x: 200, y: 150 },
+        text: "5",
+      },
+    ]);
+
+    expect(graph).toContain("drawtext");
+    expect(graph).toContain("fontcolor=white");
+    expect(graph).toContain("boxcolor=red");
+    expect(graph).toContain("boxborderw=20");
+    expect(graph).toContain("between(t,3,6)");
+    expect(graph).toContain("text='5'");
+  });
 });
