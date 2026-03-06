@@ -2,8 +2,9 @@ export { annotateImage } from "./annotation/annotateImage.js";
 export { buildSvgOverlay } from "./annotation/svgOverlay.js";
 export { generateMarkdown } from "./markdown.js";
 export { generateMermaidFlowchart } from "./mermaid.js";
-export { toMarkdownAssetPath } from "./paths.js";
+export { toBaseUrlAssetPath, toMarkdownAssetPath } from "./paths.js";
 export { renderMarkdownFromArtifacts } from "./renderMarkdown.js";
+export type { RenderMarkdownOptions } from "./renderMarkdown.js";
 export type {
   AnnotationSpec,
   Box,

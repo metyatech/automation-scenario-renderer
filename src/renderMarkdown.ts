@@ -4,20 +4,37 @@ import { dirname } from "node:path";
 import type { RunArtifacts } from "./types.js";
 
 import { generateMarkdown } from "./markdown.js";
-import { toMarkdownAssetPath } from "./paths.js";
+import { toBaseUrlAssetPath, toMarkdownAssetPath } from "./paths.js";
+
+export type RenderMarkdownOptions = {
+  assetBaseUrl?: string;
+  outputDir?: string;
+};
 
 export async function renderMarkdownFromArtifacts(
   artifacts: RunArtifacts,
   markdownPath: string,
+  options?: RenderMarkdownOptions,
 ): Promise<void> {
+  const transformPath = (assetPath: string): string => {
+    if (options?.assetBaseUrl && options?.outputDir) {
+      return toBaseUrlAssetPath(
+        assetPath,
+        options.outputDir,
+        options.assetBaseUrl,
+      );
+    }
+    return toMarkdownAssetPath(assetPath, markdownPath);
+  };
+
   const markdownArtifacts: RunArtifacts = {
     ...artifacts,
     steps: artifacts.steps.map((step) => ({
       ...step,
-      imagePath: toMarkdownAssetPath(step.imagePath, markdownPath),
+      imagePath: transformPath(step.imagePath),
     })),
     videoPath: artifacts.videoPath
-      ? toMarkdownAssetPath(artifacts.videoPath, markdownPath)
+      ? transformPath(artifacts.videoPath)
       : undefined,
   };
 
