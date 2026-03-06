@@ -45,6 +45,16 @@ export function buildSvgOverlay(
     );
   }
 
+  if (annotation.type === "number_badge") {
+    const cx = annotation.point.x;
+    const cy = annotation.point.y;
+    const r = 20;
+    base.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#ff0000" />`);
+    base.push(
+      `<text x="${cx}" y="${cy}" fill="#ffffff" font-size="22" font-family="sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${escapeXml(annotation.text)}</text>`,
+    );
+  }
+
   if (annotation.type === "label") {
     const anchorX =
       annotation.point?.x ??

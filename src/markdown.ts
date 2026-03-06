@@ -1,10 +1,12 @@
-import type { RunArtifacts } from "./types.js";
+import { generateMermaidFlowchart } from "./mermaid.js";
+import type { RelatedScenario, RunArtifacts } from "./types.js";
 
 export function generateMarkdown(artifacts: {
   scenarioId: string;
   title: string;
   steps: RunArtifacts["steps"];
   videoPath?: string;
+  relatedScenarios?: RelatedScenario[];
 }): string {
   const lines: string[] = [];
   lines.push(`# ${artifacts.title}`);
@@ -13,7 +15,16 @@ export function generateMarkdown(artifacts: {
   lines.push("");
 
   if (artifacts.videoPath) {
-    lines.push(`[操作動画](${toMarkdownPath(artifacts.videoPath)})`);
+    lines.push(`<video controls preload="metadata" style="max-width:100%">`);
+    lines.push(
+      `  <source src="${toMarkdownPath(artifacts.videoPath)}" type="video/mp4">`,
+    );
+    lines.push(`</video>`);
+    lines.push("");
+  }
+
+  if (artifacts.steps.length > 1) {
+    lines.push(generateMermaidFlowchart(artifacts.steps));
     lines.push("");
   }
 
@@ -27,6 +38,16 @@ export function generateMarkdown(artifacts: {
     lines.push(`![${step.title}](${toMarkdownPath(step.imagePath)})`);
     lines.push("");
   });
+
+  if (artifacts.relatedScenarios && artifacts.relatedScenarios.length > 0) {
+    lines.push("## 関連ガイド");
+    lines.push("");
+    for (const related of artifacts.relatedScenarios) {
+      const label = related.label ?? related.scenarioId;
+      lines.push(`- [${label}](./${related.scenarioId}.md)`);
+    }
+    lines.push("");
+  }
 
   return lines.join("\n");
 }

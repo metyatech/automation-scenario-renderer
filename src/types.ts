@@ -38,6 +38,11 @@ export type AnnotationSpec =
       text: string;
       point?: Point;
       box?: Box;
+    }
+  | {
+      type: "number_badge";
+      point: Point;
+      text: string;
     };
 
 export type StepArtifact = {
@@ -51,12 +56,18 @@ export type StepArtifact = {
   endedAtMs?: number;
 };
 
+export type RelatedScenario = {
+  scenarioId: string;
+  label?: string;
+};
+
 export type RunArtifacts = {
   scenarioId: string;
   title: string;
   steps: StepArtifact[];
   videoPath?: string;
   rawVideoPath?: string;
+  relatedScenarios?: RelatedScenario[];
 };
 
 export type VideoTimelineEvent =
@@ -99,4 +110,11 @@ export type VideoTimelineEvent =
       text: string;
       point?: Point;
       box?: Box;
+    }
+  | {
+      type: "number_badge";
+      startSeconds: number;
+      endSeconds: number;
+      point: Point;
+      text: string;
     };

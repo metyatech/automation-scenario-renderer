@@ -25,8 +25,25 @@ describe("markdown generation", () => {
     expect(markdown).toContain(
       "![Open project](artifacts/run-1/screenshots/open-project.png)",
     );
+    expect(markdown).toContain("<video controls");
     expect(markdown).toContain(
-      "[操作動画](artifacts/run-1/video/unity-basic-annotated.mp4)",
+      '<source src="artifacts/run-1/video/unity-basic-annotated.mp4"',
     );
+  });
+
+  it("renders related scenarios as See Also section", () => {
+    const markdown = generateMarkdown({
+      scenarioId: "test",
+      title: "Test",
+      steps: [{ id: "s1", title: "Step", imagePath: "img.png" }],
+      relatedScenarios: [
+        { scenarioId: "unity-basic", label: "Unity の基本操作" },
+        { scenarioId: "web-example" },
+      ],
+    });
+
+    expect(markdown).toContain("## 関連ガイド");
+    expect(markdown).toContain("[Unity の基本操作](./unity-basic.md)");
+    expect(markdown).toContain("[web-example](./web-example.md)");
   });
 });

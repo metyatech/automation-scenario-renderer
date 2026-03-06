@@ -42,6 +42,19 @@ describe("svg overlay", () => {
     expect(svg).toContain('marker-end="url(#arrowhead)"');
   });
 
+  it("draws number badge with circle and text", () => {
+    const svg = buildSvgOverlay(1280, 720, {
+      type: "number_badge",
+      point: { x: 150, y: 200 },
+      text: "1",
+    });
+
+    expect(svg).toContain("<circle");
+    expect(svg).toContain('fill="#ff0000"');
+    expect(svg).toContain("<text");
+    expect(svg).toContain(">1</text>");
+  });
+
   it("draws drag arrow alias and highlight box", () => {
     const drag = buildSvgOverlay(1280, 720, {
       type: "drag_arrow",
