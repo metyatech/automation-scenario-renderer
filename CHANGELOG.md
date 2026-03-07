@@ -13,6 +13,13 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - Mermaid flowchart auto-generation for multi-step scenarios.
 - Related scenarios section ("関連ガイド") with cross-links in Markdown output.
 - `@metyatech/automation-scenario-spec` as explicit dependency for schema alignment.
+- `assetBaseUrl` option for `renderMarkdownFromArtifacts`: generates absolute URL paths for static site generators.
+- `toBaseUrlAssetPath()` utility for base-URL-prefixed asset paths.
+- `generateAnimation()`: creates animated GIF/WebP from step screenshots via ffmpeg.
+- `AnimationConfig` type with format, fps, maxDurationSeconds, stepIds options.
+- `animationPath` field on `RunArtifacts` for embedding animation in generated Markdown.
+- YAML frontmatter generation with `stepCount`, `difficulty`, `timeEstimate` badges.
+- `buildFrontmatter()`, `computeDifficulty()`, `computeTimeEstimate()` exports.
 
 ### Fixed
 
