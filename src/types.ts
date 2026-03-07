@@ -67,7 +67,15 @@ export type RunArtifacts = {
   steps: StepArtifact[];
   videoPath?: string;
   rawVideoPath?: string;
+  animationPath?: string;
   relatedScenarios?: RelatedScenario[];
+};
+
+export type AnimationConfig = {
+  format: "gif" | "webp";
+  fps?: number;
+  maxDurationSeconds?: number;
+  stepIds?: string[];
 };
 
 export type VideoTimelineEvent =

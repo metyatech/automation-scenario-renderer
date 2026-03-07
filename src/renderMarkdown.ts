@@ -36,6 +36,9 @@ export async function renderMarkdownFromArtifacts(
     videoPath: artifacts.videoPath
       ? transformPath(artifacts.videoPath)
       : undefined,
+    animationPath: artifacts.animationPath
+      ? transformPath(artifacts.animationPath)
+      : undefined,
   };
 
   await mkdir(dirname(markdownPath), { recursive: true });
@@ -44,6 +47,7 @@ export async function renderMarkdownFromArtifacts(
     title: markdownArtifacts.title,
     steps: markdownArtifacts.steps,
     videoPath: markdownArtifacts.videoPath,
+    animationPath: markdownArtifacts.animationPath,
     relatedScenarios: markdownArtifacts.relatedScenarios,
   });
 
