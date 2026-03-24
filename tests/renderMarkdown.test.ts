@@ -95,4 +95,23 @@ describe("renderMarkdownFromArtifacts", () => {
     expect(markdown).toContain("## 関連ガイド");
     expect(markdown).toContain("[別のガイド](./other-guide.md)");
   });
+
+  it("handles empty steps and missing videoPath", async () => {
+    const tempDir = await mkdtemp(join(tmpdir(), "renderer-md-empty-"));
+    tempDirs.push(tempDir);
+
+    const markdownPath = join(tempDir, "docs", "empty.md");
+    await renderMarkdownFromArtifacts(
+      {
+        scenarioId: "empty",
+        title: "Empty Scenario",
+        steps: [],
+      },
+      markdownPath,
+    );
+
+    const markdown = await readFile(markdownPath, "utf8");
+    expect(markdown).toContain("# Empty Scenario");
+    expect(markdown).not.toContain("## 1.");
+  });
 });

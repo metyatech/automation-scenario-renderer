@@ -1,10 +1,28 @@
 {
   "name": "@metyatech/automation-scenario-renderer",
   "version": "0.1.0",
-  "description": "Renderer for markdown, annotated images, and annotated videos from scenario artifacts",
+  "description": "Renderer for markdown, annotated images, and videos from scenario artifacts",
   "type": "module",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metyatech/automation-scenario-renderer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/metyatech/automation-scenario-renderer/issues"
+  },
+  "homepage": "https://github.com/metyatech/automation-scenario-renderer#readme",
+  "keywords": [
+    "automation",
+    "scenario",
+    "markdown",
+    "renderer",
+    "annotation",
+    "image",
+    "video",
+    "agent"
+  ],
   "files": [
     "dist"
   ],

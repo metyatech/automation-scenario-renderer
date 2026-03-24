@@ -44,3 +44,14 @@ npm run verify
 - CONTRIBUTING: `CONTRIBUTING.md`
 - CODE OF CONDUCT: `CODE_OF_CONDUCT.md`
 - CHANGELOG: `CHANGELOG.md`
+
+## Release
+
+This package uses standard npm release flow:
+
+1. Update the version in `package.json`.
+2. Update `CHANGELOG.md`.
+3. Commit and push the changes.
+4. Create a Git tag (e.g., `v0.1.0`) and push it.
+5. Create a GitHub Release.
+6. Publish to npm: `npm publish --access public` (scoped as `@metyatech`).
