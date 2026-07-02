@@ -35,10 +35,16 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.6"
   },
   "overrides": {
-    "minimatch": "^10.2.1"
+    "minimatch": "^10.2.1",
+    "vite": "^7.3.5",
+    "flatted": "^3.4.2",
+    "picomatch": "^4.0.4",
+    "micromatch": {
+      "picomatch": "^2.3.2"
+    }
   },
   "lint-staged": {
     "**/*.ts": [
